@@ -10,7 +10,7 @@ Características para desarrollar:
  - En caso de no encontrar el pokemon ingresado por el usuario en el servidor generar un alert con el mensaje "pokemon no encontrado"
 */
 
-
+// hice modificaciones y las estoy actualizando en el repositorio
 //URL BASE PARA PETICIONES HTTP
 let url = "https://pokeapi.co/api/v2/pokemon/";
 

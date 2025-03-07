@@ -5,7 +5,7 @@ Si el usuario adivina la palabra, se muestra un mensaje de felicitaciones.
 Si el usuario se queda sin oportunidades, se muestra un mensaje de derrota.
 El usuario puede jugar de nuevo.
 */
-
+// Hice modificaciones y las estoy actualizando en el repositorio
 let listaPalabras = ["perro", "gato", "elefante", "jirafa", "mono","gallina","tigre","oso","leon","serpiente"];
 let palabraSecreta;
 let intentosRestantes = 6;
