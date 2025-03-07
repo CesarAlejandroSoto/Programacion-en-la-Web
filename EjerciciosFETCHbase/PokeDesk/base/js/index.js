@@ -12,12 +12,11 @@ Características para desarrollar:
 
 
 //URL BASE PARA PETICIONES HTTP
-let base_url = "https://pokeapi.co/api/v2/pokemon/";
+let url = "https://pokeapi.co/api/v2/pokemon/";
 
 
 //Funcion para cargar información de un pokemon en el DOM de nuestra página.
 function cargarPokemon(pokemon){
-    /*Escriba la lógica de la funcion */
     document.getElementById("pokemon_name").innerText = pokemon.name.toUpperCase();
     document.getElementById("pokemon_id").innerText = pokemon.id;
     document.getElementById("pokemon_height").innerText = pokemon.height;
@@ -27,29 +26,28 @@ function cargarPokemon(pokemon){
 
 //Funcion para enviar peticiones a la API por el parámetro dado. 
 function obtenerDatosPokemon(parameter){
-    /*Escriba la lógica de la funcion */
-    let url = base_url + parameter;
-    fetch(url)
-        .then((response)=>{
+    let complete_url = url + parameter;
+    fetch(complete_url)
+        .then(response=>{
             if(!response.ok){
-                throw new Error("Pokemon no encontrado");
+                throw new Error("Error en la solicitud");
             }
             return response.json();
         })
-        .then((data)=>{ 
-            console.log(data);
-            cargarPokemon(data);
+        .then( datos => {
+            console.log("Datos Obtenidos ", datos);
+            cargarPokemon(datos);
         })
-        .catch((error)=>{
-            alert(error);
-        })
+        .catch(error => {
+            console.error("Error: ", error);
+        });
 }
 
 //Funcion para obtener el dato ingresado por el usuario.
 function buscarPokemon(){
-    /*Escriba la lógica de la funcion */
-    let parametro = document.getElementById("pokemon").value;
-    obtenerDatosPokemon(parametro);
+    let busqueda = document.getElementById("pokemon_text").value;
+    console.log("Datos Ingresados", busqueda);
+    obtenerDatosPokemon(busqueda);
 }
 
 
@@ -57,6 +55,5 @@ function buscarPokemon(){
 document.getElementById("buscar").addEventListener('click',buscarPokemon);
 
 //Generar id de pokemon aleatorio
-const randomPokemon = parseInt(Math.random()*1024)+1;
-
+const randomPokemon = parseInt(Math.random()*1025);
 obtenerDatosPokemon(randomPokemon);
